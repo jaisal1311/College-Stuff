@@ -1,0 +1,20 @@
+Practical 3
+
+Setting up a Network File System
+
+Step 1
+Installing NFS Server :- apt-get -y install nfs-kernel-server
+Step 2
+Create A New Directory and file in it :- mkdir  dir_name
+Step 3 
+Open /etc/exports :- vi /etc/exports
+Step 4 
+Add Line At End Of file :- home/kali/dir_name 127.0.0.1(rw)
+Step 5 
+Use Below Commnand It Will Create A Table And See records :- sudo export -ra
+Step 6 
+Install nfs-common, if not found :- apt-get -y install nfs-common
+Step 7
+Mount The File And Transfer To Other Directory :- mount -t nfs 127.0.0.1:<dir_name_host> <dir_name_client>
+
+Done 🙌
