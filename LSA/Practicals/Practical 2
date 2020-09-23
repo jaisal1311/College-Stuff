@@ -1,0 +1,12 @@
+Initial settings: Add a User, Network Settings, Configure Services, display the list of services which are running,
+                    Stop and turn OFF auto-start setting for a service if you don’t need it, Sudo Settings.
+                    
+Steps: 
+
+1. Add a User in a kali linux: adduser <username>
+2. Network Setting In Kali Linux IP Address Command: ifconfig
+3. To display the list of services which are running In Kali Linux: sudo systemctl -t=<service_name> --state=running
+4. To start service: sudo systemctl start <service_name>
+5. To stop service: sudo systemctl stop <service_name>
+6. To enable service: sudo systemctl enable <service_name>
+

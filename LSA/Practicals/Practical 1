@@ -1,0 +1,27 @@
+Install and configure DHCP Server 
+
+Steps:
+1. install dhcp-server: apt install -y isc-dhcp-server
+
+2. configure dhcpd.conf: $sudo nano /etc/dhcp/dhcpd.conf
+
+3. check your IP details: ip addr or ifconfig
+
+4. configure dhcpd.conf and save: nano /etc/dhcp/dhcpd.conf 
+
+Following changes are to be made in dhcpd.conf: 
+  #config
+  subnet 192.168.10.0 netmask 255.255.255.0 {
+  option routers 192.168.10.1 ;
+  option domain-name-servers 192.168.10.1 ;
+  range 192.168.10.10 192.168.10.150;
+  range 192.168.10.160 192.168.10.220
+  default-lease-time 600 ;
+  max-lease-time 7200 ;
+  # we want this server to be the only DHCP server in this network
+  authoritative ;
+  } 
+
+enable DHCP service: sudo systemctl enable isc-dhcp-server.service
+
+start DHCP Service : sudo systemctl start isc-dhcp-server.service
