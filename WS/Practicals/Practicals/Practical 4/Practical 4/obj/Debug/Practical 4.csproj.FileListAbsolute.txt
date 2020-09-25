@@ -1,7 +1,0 @@
-C:\Users\Jaisal Shah\Desktop\TYCS-64\College-Stuff\WS\Practicals\Practicals\Practical 4\Practical 4\bin\Practical 4.dll.config
-C:\Users\Jaisal Shah\Desktop\TYCS-64\College-Stuff\WS\Practicals\Practicals\Practical 4\Practical 4\bin\Practical 4.dll
-C:\Users\Jaisal Shah\Desktop\TYCS-64\College-Stuff\WS\Practicals\Practicals\Practical 4\Practical 4\bin\Practical 4.pdb
-C:\Users\Jaisal Shah\Desktop\TYCS-64\College-Stuff\WS\Practicals\Practicals\Practical 4\Practical 4\obj\Debug\Practical 4.csprojAssemblyReference.cache
-C:\Users\Jaisal Shah\Desktop\TYCS-64\College-Stuff\WS\Practicals\Practicals\Practical 4\Practical 4\obj\Debug\Practical 4.csproj.CoreCompileInputs.cache
-C:\Users\Jaisal Shah\Desktop\TYCS-64\College-Stuff\WS\Practicals\Practicals\Practical 4\Practical 4\obj\Debug\Practical 4.dll
-C:\Users\Jaisal Shah\Desktop\TYCS-64\College-Stuff\WS\Practicals\Practicals\Practical 4\Practical 4\obj\Debug\Practical 4.pdb
