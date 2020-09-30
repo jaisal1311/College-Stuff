@@ -1,50 +1,51 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, request, flash, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
-app.config['TEMPLATES_AUTO_RELOAD'] = True
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.db'
+app.config['SECRET_KEY'] = "random string"
 
 db = SQLAlchemy(app)
 
 class Friends(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(100), nullable = False)
+    Id = db.Column('student_id', db.Integer, primary_key = True)
+    name = db.Column(db.String(100))
 
-db.create_all()
-
+    def __init__(self, Id, name):
+        self.Id = Id
+        self.name = name
+        
 @app.route('/')
-def index():
+def show_all():
+   return render_template('show_all.html')
 
-    friend = db.session.query(Friends).all()
-    return render_template('index.html', friends = friend)
+@app.route('/new', methods = ['GET', 'POST'])
+def new():
+    if request.method == "POST":
+        if not request.form['Id'] or not request.form['name']:
+            flash("Please fill all details properly", "error")
+        else:
+            friend = Friends(Id = request.form['Id'], name = request.form['name'])
 
-@app.route('/add_friend', methods = ['GET', 'POST'])
-def add_friend():
-    return "reached"
-    id = request.form["id"]
-    names = request.form["name"]
-     
-    f = Friends(id = id, name = names)
+            db.session.add(friend)
+            db.session.commit()
 
-    try:
-        db.session.add(f)
-        db.session.commit()
+            return redirect(url_for('show_all'))
+        
+    return render_template('new.html')
 
-        data = db.session.query(Friends).all()
-        print(data)
-        return redirect('/')
-    except Exception as e:
-        return e
+@app.route('/search', methods = ['GET', 'POST'])
+def search():
+    if request.method == "POST":
+        i = request.form['Id']
+        fr = Friends.query.filter_by(Id = i).first()
+        d = {
+            'Id': fr.Id,
+            'Name': fr.name
+        }
+        return render_template('res.html', f = d)
+            
 
-@app.route('/get_friend', methods = ['GET', 'POST'])
-def get_friend():
-    id = request.form["id"]
-    name = db.session.query(Friends).filter_by(id = id).first()
-    print(name)
-    return redirect('/')
-
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+   db.create_all()
+   app.run(debug = True)

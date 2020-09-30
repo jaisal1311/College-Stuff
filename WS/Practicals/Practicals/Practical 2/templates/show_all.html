@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head></head>
+    <body>
+        <h3> (<a href="{{ url_for('new') }}">Add Friend
+            </a>)</h3>
+        
+        <h3>Search by Id</h3>
+        <form action = "/search" method = "POST">
+            <label for = "Id">Id</label><br>
+            <input type = "text" name = "Id" placeholder = "Id" /><br>
+            <input type = "submit" value = "Submit" />
+        </form>
+    </body>
+</html>
